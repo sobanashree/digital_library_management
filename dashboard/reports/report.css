@@ -1,0 +1,241 @@
+/* Color Palette Variables */
+:root {
+  --side-bg: #1c1109;
+  --side-hover: #2e1e12;
+  --main-bg: #f9f6f0;
+  --card-bg: #ffffff;
+  --accent-gold: #b37d3e;
+  --text-dark: #2c1b10;
+  --text-muted: #796659;
+  --border-light: #e5ddd4;
+  --success-color: #2e7d32;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--main-bg);
+  color: var(--text-dark);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: var(--side-bg);
+  color: #ffffff;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 { font-size: 22px; }
+.sidebar .subtitle {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--accent-gold);
+  margin-bottom: 25px;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  color: #d1c7bd;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: var(--side-hover);
+  color: var(--accent-gold);
+  font-weight: bold;
+}
+
+/* Main Content Workspace */
+.main {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+header h1 { font-size: 26px; }
+header p { color: var(--text-muted); font-size: 14px; }
+
+.header-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-refresh {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.btn-refresh:hover {
+  background: #f1e9dd;
+}
+
+.btn-back {
+  background: var(--side-bg);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.btn-back:hover {
+  background: var(--side-hover);
+  color: var(--accent-gold);
+}
+
+/* Metrics Cards Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.metric-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.metric-icon {
+  font-size: 32px;
+  background: #f7f3ee;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.metric-info p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.metric-info h2 {
+  font-size: 26px;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.metric-info span {
+  font-size: 12px;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+/* Report Table Cards */
+.report-table-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.card-header h2 {
+  font-size: 17px;
+  color: var(--text-dark);
+}
+
+.report-tag {
+  background: #f1e9dd;
+  color: var(--accent-gold);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4ede4;
+  color: var(--text-dark);
+}
+
+tr:hover {
+  background-color: #faf7f2;
+}
+
+.category-badge {
+  background: #f1e9dd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.in-stock-tag {
+  color: var(--success-color);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}

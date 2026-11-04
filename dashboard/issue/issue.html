@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - Issue Book</title>
+    <link rel="stylesheet" href="issue.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>📚 Library</h2>
+        <p class="subtitle">MANAGEMENT SYSTEM</p>
+        <nav>
+            <a href="../dashboard.html">🏠 Dashboard</a>
+            <a href="../books/book.html">📖 Books</a>
+            <a href="../members/member.html">👥 Members</a>
+            <a href="issue.html" class="active">📤 Issue Book</a>
+            <a href="../return/return.html">📥 Return Book</a>
+            <a href="../reports/report.html">📊 Reports</a>
+            <a href="../about/about.html">ℹ️ About</a>
+            <a href="javascript:void(0)" onclick="logout()">🚪 Logout</a>
+        </nav>
+    </div>
+
+    <!-- Main Workspace Content -->
+    <div class="main">
+        <header>
+            <div>
+                <h1>Issue Book</h1>
+                <p>Assign catalog items to registered members and update book stock levels.</p>
+            </div>
+            <div>
+                <a href="../dashboard.html" class="btn-back">⬅ Back to Dashboard</a>
+            </div>
+        </header>
+
+        <!-- Dynamic Summary Badges -->
+        <div class="stats-row">
+            <div class="stat-badge">Active Issues: <b id="totalActiveIssues">0</b></div>
+            <div class="stat-badge">Total Transactions: <b id="totalIssueRecords">0</b></div>
+        </div>
+
+        <!-- Issue Book Form Layout -->
+        <div class="card-form">
+            <h2>📤 Issue a Book to Member</h2>
+            <p class="form-instruction">Select a registered member and an available book. Available stock updates automatically.</p>
+
+            <!-- Dynamic Feedback Alert -->
+            <div id="alertMessage" class="alert-box"></div>
+
+            <form id="issueForm" onsubmit="handleIssueBook(event)">
+                <div class="form-grid">
+                    <!-- Member Select -->
+                    <div class="form-group">
+                        <label for="memberSelect">Select Member *</label>
+                        <select id="memberSelect" required>
+                            <option value="">-- Choose Member --</option>
+                        </select>
+                    </div>
+
+                    <!-- Book Select -->
+                    <div class="form-group">
+                        <label for="bookSelect">Select Book *</label>
+                        <select id="bookSelect" onchange="checkSelectedBookAvailability()" required>
+                            <option value="">-- Choose Book --</option>
+                        </select>
+                        <small id="stockStatusText" class="stock-status"></small>
+                    </div>
+
+                    <!-- Issue Date -->
+                    <div class="form-group">
+                        <label for="issueDate">Issue Date *</label>
+                        <input type="date" id="issueDate" required>
+                    </div>
+
+                    <!-- Return Due Date -->
+                    <div class="form-group">
+                        <label for="returnDate">Return Due Date *</label>
+                        <input type="date" id="returnDate" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn-reset" onclick="resetFormState()">Clear Form</button>
+                    <button type="submit" id="btnSubmitIssue" class="btn-submit">Confirm & Issue Book</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Recent Issued Transactions Table -->
+        <div class="table-container">
+            <div class="table-header">
+                <h2>📋 Active Issued Books Log</h2>
+                <input type="text" id="searchInput" placeholder="Search by member, book title, or issue ID..." onkeyup="searchIssueRecords()">
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issue ID</th>
+                        <th>Member Details</th>
+                        <th>Book Details</th>
+                        <th>Issue Date</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="issueTableBody">
+                    <!-- Populated dynamically via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <footer>© 2026 Library Management System</footer>
+    </div>
+
+    <script src="issue.js"></script>
+</body>
+</html>

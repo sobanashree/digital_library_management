@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Dashboard - Digital Library Management</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <h2>📚 Library</h2>
+        <p class="subtitle">MANAGEMENT SYSTEM</p>
+
+        <nav>
+            <a href="dashboard.html" class="active">🏠 Dashboard</a>
+            <a href="books/book.html">📖 Books</a>
+            <a href="members/member.html">👥 Members</a>
+            <a href="issue/issue.html">📤 Issue Book</a>
+            <a href="return/return.html">📥 Return Book</a>
+            <a href="reports/report.html">📊 Reports</a>
+            <a href="about/about.html">ℹ️ About</a>
+            <a href="./index.html" id="logoutBtn">🚪 Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main">
+
+        <header>
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome to your library management system.</p>
+            </div>
+            <div class="profile">👤 Admin</div>
+        </header>
+
+        <section class="welcome">
+            <h2>Welcome Back, Admin!</h2>
+            <p>Manage your library activities and operations from one place.</p>
+        </section>
+
+        <h2 class="section-title">Library Overview</h2>
+
+        <section class="cards">
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <p>Total Books</p>
+                <h2 id="books">10</h2>
+                <span>Books available in library</span>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <p>Total Members</p>
+                <h2 id="members">5</h2>
+                <span>Registered library members</span>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📤</div>
+                <p>Books Issued</p>
+                <h2 id="issued">1</h2>
+                <span>Currently issued books</span>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⏰</div>
+                <p>Pending Returns</p>
+                <h2 id="pending">3</h2>
+                <span>Books waiting for return</span>
+            </div>
+        </section>
+
+        <section class="bottom">
+            <div class="panel">
+                <h3>Quick Actions</h3>
+                <button type="button" data-page="books">View Books</button>
+                <button type="button" data-page="members">View Members</button>
+                <button type="button" data-page="issue book">Issue a Book</button>
+                <button type="button" data-page="return book">Return a Book</button>
+                <button type="button" data-page="about">About System</button>
+            </div>
+
+            <div class="panel">
+                <h3>Library Information</h3>
+                <p>📚 Organize and manage book catalog</p>
+                <p>👥 Maintain registered student &amp; faculty details</p>
+                <p>📤 Track issued books &amp; due dates</p>
+                <p>📥 Monitor overdue items and returns</p>
+            </div>
+        </section>
+
+        <footer>
+            © 2026 Digital Library Management System. All rights reserved.
+        </footer>
+
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

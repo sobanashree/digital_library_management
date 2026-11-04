@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library - Reports & Analytics</title>
+
+    <link rel="stylesheet" href="report.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <h2>📚 Library</h2>
+
+        <p class="subtitle">MANAGEMENT SYSTEM</p>
+
+        <nav>
+
+            <a href="../dashboard.html">🏠 Dashboard</a>
+
+            <a href="../books/book.html">📖 Books</a>
+
+            <a href="../members/member.html">👥 Members</a>
+
+            <a href="../issue/issue.html">📤 Issue Book</a>
+
+            <a href="../return/return.html">📥 Return Book</a>
+
+            <a href="report.html" class="active">📊 Reports</a>
+
+            <a href="../about/about.html">ℹ️ About</a>
+
+            <a href="javascript:void(0)" onclick="logout()">🚪 Logout</a>
+
+        </nav>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <!-- HEADER -->
+        <header>
+
+            <div>
+
+                <h1>Library Activity & Inventory Reports</h1>
+
+                <p>
+                    Dynamic activity summary generated using
+                    LocalStorage datasets, loops and counters.
+                </p>
+
+            </div>
+
+            <div class="header-right">
+
+                <button class="btn-refresh" onclick="generateReports()">
+                    🔄 Refresh Data
+                </button>
+
+                <a href="../dashboard.html" class="btn-back">
+                    ⬅ Back to Dashboard
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- SUMMARY METRICS -->
+
+        <div class="metrics-grid">
+
+
+            <!-- TOTAL BOOK TITLES -->
+
+            <div class="metric-card">
+
+                <div class="metric-icon">📚</div>
+
+                <div class="metric-info">
+
+                    <p>Total Book Titles</p>
+
+                    <h2 id="metricTotalBooks">0</h2>
+
+                    <span id="metricTotalCopies">
+                        0 Total physical copies
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL MEMBERS -->
+
+            <div class="metric-card">
+
+                <div class="metric-icon">👥</div>
+
+                <div class="metric-info">
+
+                    <p>Total Members</p>
+
+                    <h2 id="metricTotalMembers">0</h2>
+
+                    <span>Registered active members</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- AVAILABLE BOOKS -->
+
+            <div class="metric-card">
+
+                <div class="metric-icon">✅</div>
+
+                <div class="metric-info">
+
+                    <p>Available Books</p>
+
+                    <h2 id="metricAvailableCopies">0</h2>
+
+                    <span>Copies currently available</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- ISSUED BOOKS -->
+
+            <div class="metric-card">
+
+                <div class="metric-icon">📤</div>
+
+                <div class="metric-info">
+
+                    <p>Issued Books</p>
+
+                    <h2 id="metricIssuedCopies">0</h2>
+
+                    <span>Currently borrowed books</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- CATEGORY INVENTORY TABLE -->
+
+        <div class="report-table-card">
+
+            <div class="card-header">
+
+                <h2>📑 Inventory Breakdown by Category</h2>
+
+                <span class="report-tag">
+                    Dynamic Loop Generation
+                </span>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Category</th>
+
+                        <th>Unique Titles</th>
+
+                        <th>Total Shelf Copies</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="categoryTableBody">
+
+                    <tr>
+
+                        <td colspan="4">
+                            Loading book inventory...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- ACTIVE BORROWING LOG -->
+
+        <div class="report-table-card">
+
+            <div class="card-header">
+
+                <h2>📋 Active Borrowing Log</h2>
+
+                <span class="report-tag" id="activeLogTag">
+                    0 Active Loans
+                </span>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Issue ID</th>
+
+                        <th>Member Name</th>
+
+                        <th>Department</th>
+
+                        <th>Book Title</th>
+
+                        <th>Issue Date</th>
+
+                        <th>Due Date</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="activeLoansTableBody">
+
+                    <tr>
+
+                        <td colspan="6">
+                            Loading borrowing records...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            © 2026 Library Management System
+
+        </footer>
+
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="report.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+:root {
+  --primary-dark: #1e130c;
+  --panel-bg: rgba(36, 23, 15, 0.88);
+  --accent-gold: #c89656;
+  --accent-hover: #dfa869;
+  --brown-border: rgba(200, 150, 86, 0.28);
+  --text-main: #f5ede6;
+  --text-muted: #bfaaa0;
+  --danger: #d9534f;
+  --success: #5cb85c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+}
+
+.library-bg-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at center, rgba(30, 19, 12, 0.65), rgba(16, 10, 6, 0.94)),
+    url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1920&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  filter: brightness(0.9);
+}
+
+.auth-wrapper {
+  width: 100%;
+  max-width: 480px;
+}
+
+.auth-card {
+  background: var(--panel-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--brown-border);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logo-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, var(--accent-gold), #8f5823);
+  color: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.brand-title {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.brand-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: rgba(18, 11, 7, 0.6);
+  padding: 6px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-btn.active {
+  background: var(--accent-gold);
+  color: #1a0f08;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.input-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.input-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-field i {
+  position: absolute;
+  left: 14px;
+  color: var(--accent-gold);
+  font-size: 15px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  background: rgba(22, 13, 8, 0.7);
+  border: 1px solid var(--brown-border);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.input-field input:focus {
+  border-color: var(--accent-gold);
+}
+
+.submit-btn {
+  margin-top: 8px;
+  padding: 13px;
+  background: linear-gradient(135deg, var(--accent-gold), #9b632c);
+  border: none;
+  border-radius: 10px;
+  color: #1a0f08;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.submit-btn:hover {
+  filter: brightness(1.1);
+}
+
+.switch-helper {
+  font-size: 13px;
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.switch-helper span {
+  color: var(--accent-gold);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #2b1a10;
+  border-left: 5px solid var(--accent-gold);
+  transform: translateX(150%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast.toast-error {
+  border-left-color: var(--danger);
+  background: #381515;
+}
+
+.toast.toast-success {
+  border-left-color: var(--success);
+  background: #17331b;
+}

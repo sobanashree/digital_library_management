@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management - About</title>
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>📚 Library Hub</h2>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="../dashboard.html" class="nav-link">🏠 Dashboard</a>
+        <a href="../books/book.html" class="nav-link">📖 Books</a>
+        <a href="../members/member.html" class="nav-link">👥 Members</a>
+        <a href="../issue/issue.html" class="nav-link">📤 Issue Book</a>
+        <a href="../return/return.html" class="nav-link">📥 Return Book</a>
+        <a href="../reports/report.html" class="nav-link">📊 Reports</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="about/about.html" class="about-btn active">ℹ️ About</a>
+        <a href="#" id="logoutBtn" class="logout-btn">🚪 Logout</a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <header class="topbar">
+        <h1>About System</h1>
+        <a href="../dashboard.html" class="back-link">← Back to Dashboard</a>
+      </header>
+
+      <div class="content-body">
+
+        <section class="card about-hero">
+          <div class="hero-content">
+            <h2>Digital Library Management System</h2>
+            <p>
+              An integrated platform designed to automate cataloging, book issuance,
+              return processing, and patron record administration with maximum efficiency.
+            </p>
+          </div>
+          <div class="hero-badge">Version 1.0.0</div>
+        </section>
+
+        <section class="stats-grid">
+          <div class="card stat-card">
+            <span class="stat-number">50,000+</span>
+            <span class="stat-label">Total Books</span>
+          </div>
+          <div class="card stat-card">
+            <span class="stat-number">1,200+</span>
+            <span class="stat-label">Active Members</span>
+          </div>
+          <div class="card stat-card">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Automated Circulation</span>
+          </div>
+          <div class="card stat-card">
+            <span class="stat-number">Fast</span>
+            <span class="stat-label">Barcode Ready</span>
+          </div>
+        </section>
+
+        <div class="grid-dual">
+          <section class="card">
+            <h2>Core Modules</h2>
+            <ul class="feature-list">
+              <li><strong>Book Catalog:</strong> Add, edit, remove, and manage inventory counts.</li>
+              <li><strong>Member Directory:</strong> Track student and faculty records with unique ID generation.</li>
+              <li><strong>Issue &amp; Returns:</strong> Instant book checkout with due-date alerts.</li>
+              <li><strong>Reporting:</strong> Generate summaries of active loans and statistics.</li>
+            </ul>
+          </section>
+
+          <section class="card">
+            <h2>System Specifications</h2>
+            <table class="specs-table">
+              <tbody>
+                <tr><td><strong>Platform</strong></td><td>Web-Based Responsive Portal</td></tr>
+                <tr><td><strong>Frontend</strong></td><td>HTML5, CSS3, JavaScript</td></tr>
+                <tr><td><strong>Storage</strong></td><td>Browser Local Storage</td></tr>
+                <tr><td><strong>Compatibility</strong></td><td>Chrome, Firefox, Edge, Safari</td></tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+
+        <section class="card support-card">
+          <div>
+            <h2>Need Technical Support?</h2>
+            <p>For questions, technical glitches, or database access, contact the system admin.</p>
+          </div>
+          <a href="mailto:admin@libraryhub.com" class="btn-primary">Contact Admin</a>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="about.js"></script>
+</body>
+</html>

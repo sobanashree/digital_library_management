@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - Book Management</title>
+    <link rel="stylesheet" href="book.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>📚 Library</h2>
+        <p class="subtitle">MANAGEMENT SYSTEM</p>
+        <nav>
+            <!-- Link navigating back to root index.html -->
+            <a href="../dashboard.html">🏠 Dashboard</a>
+            <a href="book.html" class="active">📖 Books</a>
+            <a href="../members/member.html">👥 Members</a>
+            <a href="../issue/issue.html">📤 Issue Book</a>
+            <a href="../return/return.html">📥 Return Book</a>
+            <a href="../reports/report.html">📊 Reports</a>
+            <a href="../about.html">ℹ️ About</a>
+            <a href="javascript:void(0)" onclick="logout()">🚪 Logout</a>
+        </nav>
+    </div>
+
+    <!-- Main Workspace Content -->
+    <div class="main">
+        <header>
+            <div>
+                <h1>Book Management</h1>
+                <p>Add new books with cover image URL, edit records, view details, and manage inventory.</p>
+            </div>
+            <div>
+                <a href="../dashboard.html" class="btn-back">⬅ Back to Dashboard</a>
+            </div>
+        </header>
+
+        <!-- Dynamic Statistics Counters -->
+        <div class="stats-row">
+            <div class="stat-badge">Total Titles: <b id="totalTitles">0</b></div>
+            <div class="stat-badge">Total Copies: <b id="totalCopies">0</b></div>
+        </div>
+
+        <!-- Book Records Table Container -->
+        <div class="table-container">
+            <div class="table-header">
+                <h2>📚 Book Records</h2>
+                <div class="header-actions">
+                    <input type="text" id="searchInput" placeholder="Search by title, ID, author..." onkeyup="searchBooks()">
+                    <button class="btn-add" onclick="openAddModal()">➕ Add New Book</button>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Book ID</th>
+                        <th>Book Name</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bookTableBody">
+                    <!-- Populated dynamically via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <footer>© 2026 Library Management System</footer>
+    </div>
+
+    <!-- 1. ADD BOOK MODAL -->
+    <div class="modal" id="addModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>➕ Add New Book</h3>
+                <span class="close-btn" onclick="closeModal('addModal')">&times;</span>
+            </div>
+            <form id="addForm" onsubmit="addNewBook(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Book ID</label>
+                        <input type="text" id="addId" placeholder="e.g. B106" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Book Name</label>
+                        <input type="text" id="addName" placeholder="Enter book title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" id="addAuthor" placeholder="Enter author name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" id="addCategory" placeholder="e.g. Technology, Novel, Science" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="addQty" min="1" placeholder="Available copies" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cover Image URL (Paste image link)</label>
+                        <input type="url" id="addImageUrl" placeholder="https://example.com/cover.jpg" oninput="previewAddImageUrl()">
+                        <!-- Live preview container -->
+                        <div class="img-preview-box" id="addImgPreviewContainer">
+                            <img id="addImgPreview" src="" alt="Preview">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('addModal')">Cancel</button>
+                    <button type="submit" class="btn-save">Save Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. VIEW DETAILS MODAL -->
+    <div class="modal" id="viewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📖 Book Information</h3>
+                <span class="close-btn" onclick="closeModal('viewModal')">&times;</span>
+            </div>
+            <div class="modal-body view-details">
+                <div class="view-cover-wrapper">
+                    <img id="viewImage" src="" alt="Book Cover">
+                </div>
+                <p><strong>Book ID:</strong> <span id="viewId"></span></p>
+                <p><strong>Book Name:</strong> <span id="viewName"></span></p>
+                <p><strong>Author:</strong> <span id="viewAuthor"></span></p>
+                <p><strong>Category:</strong> <span id="viewCategory"></span></p>
+                <p><strong>Available Copies:</strong> <span id="viewQty"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeModal('viewModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. EDIT BOOK MODAL -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✏️ Edit Book Details</h3>
+                <span class="close-btn" onclick="closeModal('editModal')">&times;</span>
+            </div>
+            <form id="editForm" onsubmit="saveBookChanges(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Book ID (Read-only)</label>
+                        <input type="text" id="editId" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Book Name</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" id="editAuthor" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <input type="text" id="editCategory" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" id="editQty" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Cover Image URL (Paste link to update)</label>
+                        <input type="url" id="editImageUrl" placeholder="https://example.com/cover.jpg" oninput="previewEditImageUrl()">
+                        <!-- Live preview container -->
+                        <div class="img-preview-box active" id="editImgPreviewContainer">
+                            <img id="editImgPreview" src="" alt="Preview">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal('editModal')">Cancel</button>
+                    <button type="submit" class="btn-save">Update Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="book.js"></script>
+</body>
+</html>
